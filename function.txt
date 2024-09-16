@@ -1,0 +1,9 @@
+1. // Animation
+  const animation = new THREE.AnimationClip('car_animation', 5, [
+	new THREE.KeyframeTrack('.scale', [0, 1], [1, 2]),
+  ]); 
+
+car_animation : name of the animation
+5: duration of the animation
+keyframe : refer documentation
+
