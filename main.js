@@ -31,6 +31,12 @@ loader.load('assets/car.glb', function (gltf) {
 	console.error(error);
 });
 
+// Animation
+const animation = new THREE.AnimationClip('car_animation', 5, [
+	new THREE.KeyframeTrack('.scale', [0, 1], [1, 2]),
+  ]); 
+  
+
 // Add lights to the scene
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(5, 5, 5);
@@ -39,6 +45,7 @@ scene.add(directionalLight);
 const ambientLight = new THREE.AmbientLight(0x404040); // soft white light
 scene.add(ambientLight);
 
+camera.position.y = 1;
 camera.position.z = 5;
 
 function animate() {
