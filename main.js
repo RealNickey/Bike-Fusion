@@ -16,10 +16,16 @@ controls.dampingFactor = 0.25;
 controls.screenSpacePanning = false;
 controls.maxPolarAngle = Math.PI / 2;
 
+//add background image
+const loader2 = new THREE.TextureLoader();
+loader2.load('assets/backdrop.jpg	', function (texture) {
+	scene.background = texture;
+});
+
 // Load 3D car model
 const loader = new GLTFLoader();
 
-loader.load('assets/free_concept_car_004_-_public_domain_cc0.glb', function (gltf) {
+loader.load('assets/car.glb', function (gltf) {
 	scene.add(gltf.scene);
 }, undefined, function (error) {
 	console.error(error);
