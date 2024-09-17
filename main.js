@@ -17,15 +17,24 @@ controls.screenSpacePanning = false;
 controls.maxPolarAngle = Math.PI / 2;
 
 //add background image
-const loader2 = new THREE.TextureLoader();
-loader2.load('assets/backdrop.jpg	', function (texture) {
-	scene.background = texture;
-});
+// const loader2 = new THREE.TextureLoader();
+// loader2.load('assets/backdrop.jpg	', function (texture) {
+// 	scene.background = texture;
+// });
 
 // Load 3D car model
 const loader = new GLTFLoader();
 
 loader.load('assets/car.glb', function (gltf) {
+	scene.add(gltf.scene);
+}, undefined, function (error) {
+	console.error(error);
+});
+
+// Load HDRi background
+const loader1 = new GLTFLoader();
+
+loader1.load('assets/Beachscape 1.glb', function (gltf) {
 	scene.add(gltf.scene);
 }, undefined, function (error) {
 	console.error(error);
