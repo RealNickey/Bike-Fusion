@@ -26,7 +26,7 @@ controls.maxPolarAngle = Math.PI / 2;
 const loader = new GLTFLoader();
 
 loader.load('assets/car.glb', function (gltf) {
-	gltf.scene.position.y=-1;
+	gltf.scene.position.y=-1; //object position change
 	scene.add(gltf.scene);
 }, undefined, function (error) {
 	console.error(error);
