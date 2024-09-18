@@ -26,7 +26,7 @@ controls.maxPolarAngle = Math.PI / 2;
 const loader = new GLTFLoader();
 
 loader.load('assets/car.glb', function (gltf) {
-	gltf.scene.position.y=-1; //object position change
+	//gltf.scene.position.y=1; //object position change
 	scene.add(gltf.scene);
 }, undefined, function (error) {
 	console.error(error);
@@ -36,7 +36,7 @@ loader.load('assets/car.glb', function (gltf) {
 // Load HDRi background
 const loader1 = new GLTFLoader();
 
-loader1.load('assets/Beachscape 1.glb', function (gltf) {
+loader1.load('assets/showroom.glb', function (gltf) {
 	scene.add(gltf.scene);
 }, undefined, function (error) {
 	console.error(error);
@@ -45,7 +45,7 @@ loader1.load('assets/Beachscape 1.glb', function (gltf) {
 // Animation
 const animation = new THREE.AnimationClip('car_animation', 5, [
 	new THREE.KeyframeTrack('.scale', [0, 1], [1, 2]),
-  ]); 
+  ]);
   
 
 // Add lights to the scene
@@ -58,6 +58,25 @@ scene.add(ambientLight);
 
 camera.position.y = 1;
 camera.position.z = 5;
+
+
+
+//sound
+// create an AudioListener and add it to the camera
+const listener = new THREE.AudioListener();
+camera.add( listener );
+
+// create a global audio source
+const sound = new THREE.Audio( listener );
+
+// load a sound and set it as the Audio object's buffer
+const audioLoader = new THREE.AudioLoader();
+audioLoader.load( 'src/sound.mp3', function( buffer ) {
+	sound.setBuffer( buffer );
+	sound.setLoop( true );
+	sound.setVolume( 0.5 );
+	sound.play();
+});
 
 function animate() {
 	requestAnimationFrame(animate);
