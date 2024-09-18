@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>My first three.js app</title>
-		<style link="stylesheet" href="/style.css"></style>
-			
-	</head>
-	<body>
-		<script type="module" src="/main.js"></script>
-	</body>
+<head>
+  <meta charset="utf-8">
+  <title>My first three.js app</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="meteor" class="meteor"></div>
+  <script type="module" src="/main.js"></script>
+  <script>
+    var loader = document.getElementById("meteor");
+    var minDuration = 2000; // Minimum duration in milliseconds (e.g., 3000ms = 3 seconds)
+    var startTime = Date.now();
+
+    window.addEventListener("load", function() {
+      var elapsedTime = Date.now() - startTime;
+      var remainingTime = minDuration - elapsedTime;
+
+      if (remainingTime > 0) {
+        setTimeout(function() {
+          loader.style.display = "none";
+        }, remainingTime);
+      } else {
+        loader.style.display = "none";
+      }
+    });
+  </script>
+</body>
 </html>
