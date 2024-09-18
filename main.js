@@ -10,11 +10,15 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Add orbit controls
+
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
 controls.dampingFactor = 0.25;
 controls.screenSpacePanning = false;
 controls.maxPolarAngle = Math.PI / 2;
+controls.minPolarAngle = Math.PI / 2;
+controls.enableZoom=false;
+
 
 //add background image
 // const loader2 = new THREE.TextureLoader();
@@ -26,7 +30,7 @@ controls.maxPolarAngle = Math.PI / 2;
 const loader = new GLTFLoader();
 
 loader.load('assets/car.glb', function (gltf) {
-	//gltf.scene.position.y=1; //object position change
+	gltf.scene.position.y=-1; //object position change
 	scene.add(gltf.scene);
 }, undefined, function (error) {
 	console.error(error);
@@ -37,6 +41,7 @@ loader.load('assets/car.glb', function (gltf) {
 const loader1 = new GLTFLoader();
 
 loader1.load('assets/showroom.glb', function (gltf) {
+	gltf.scene.position.y=-1;
 	scene.add(gltf.scene);
 }, undefined, function (error) {
 	console.error(error);
@@ -57,7 +62,7 @@ const ambientLight = new THREE.AmbientLight(0xffffff); // soft white light
 scene.add(ambientLight);
 
 camera.position.y = 1;
-camera.position.z = 5;
+camera.position.z = 4;
 
 
 
@@ -76,6 +81,10 @@ audioLoader.load( 'src/sound.mp3', function( buffer ) {
 	sound.setLoop( true );
 	sound.setVolume( 0.5 );
 	sound.play();
+	
+	setTimeout(() => {
+       sound.stop(); 
+    }, 4000);
 });
 
 function animate() {
