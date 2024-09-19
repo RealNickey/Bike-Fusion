@@ -68,9 +68,7 @@ const animation = new THREE.AnimationClip('car_animation', 5, [
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
   if (carModel) {
-    carModel.rotation.x += 0.05;
     carModel.rotation.y += 0.075;
-    carModel.rotation.z += 0.05;
   }
 }
 
