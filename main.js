@@ -22,52 +22,61 @@ controls.maxPolarAngle = Math.PI / 2;
 controls.minPolarAngle = Math.PI / 2;
 controls.enableZoom=false;
 
+
+let carModel; // Variable to store the loaded car model
+let loadedShowroom = null; // Variable to store the loaded showroom
+const loader = new GLTFLoader();
+const showroom = new GLTFLoader();
+const loaderElement = document.getElementById("meteor");
+
+// Function to hide the loader
+function hideLoader() {
+  loaderElement.style.display = "none";
+}
+
 // Load 3D car model
-const car = new GLTFLoader();
-
-car.load('assets/car.glb', function (gltf) {
-	gltf.scene.position.y=-1; //object position change
-	scene.add(gltf.scene);
-}, undefined, function (error) {
-	console.error(error);
-});
-
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
-const torus = new THREE.Mesh(geometry, material);
+loader.load(
+  "assets/car.glb",
+  function (gltf) {
+    carModel = gltf.scene;
+    carModel.position.y = -1; //object position change
+    scene.add(carModel);
+    if (loadedShowroom) hideLoader(); // Hide loader if showroom is already loaded
+  },
+  undefined,
+  function (error) {
+    console.error(error);
+  }
+);
 
 // Load showroom background
-const showroom = new GLTFLoader();
-let loadedShowroom = null;
-
 showroom.load('assets/showroom.glb', function (gltf) {
-	gltf.scene.position.y = -1;
-	scene.add(gltf.scene);
-	loadedShowroom = gltf; // Store the loaded object in the constant
+  gltf.scene.position.y = -1;
+  scene.add(gltf.scene);
+  loadedShowroom = gltf; // Store the loaded object in the constant
+  if (carModel) hideLoader(); // Hide loader if car model is already loaded
 }, undefined, function (error) {
-	console.error(error);
+  console.error(error);
 });
-
-// Later in your code, you can use loadedShowroom
-// Example: console.log(loadedShowroom);
 
 // Animation
 const animation = new THREE.AnimationClip('car_animation', 5, [
-	new THREE.KeyframeTrack('.scale', [0, 1], [1, 2]),
-  ]);
-  
- // Scroll Animation
+  new THREE.KeyframeTrack('.scale', [0, 1], [1, 2]),
+]);
 
+// Scroll Animation
 function moveCamera() {
-	const t = document.body.getBoundingClientRect().top;
-	loadedShowroom.rotation.x += 0.05;
-	loadedShowroom.rotation.y += 0.075;
-	loadedShowroom.rotation.z += 0.05;
-  
+  const t = document.body.getBoundingClientRect().top;
+  if (carModel) {
+    carModel.rotation.x += 0.05;
+    carModel.rotation.y += 0.075;
+    carModel.rotation.z += 0.05;
   }
-  
-  document.body.onscroll = moveCamera;
-  moveCamera();
+}
+
+document.body.onscroll = moveCamera;
+moveCamera();
+
 
 // Add lights to the scene
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
