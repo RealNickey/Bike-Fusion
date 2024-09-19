@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import './style.css';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -22,31 +23,51 @@ controls.minPolarAngle = Math.PI / 2;
 controls.enableZoom=false;
 
 // Load 3D car model
-const loader = new GLTFLoader();
+const car = new GLTFLoader();
 
-loader.load('assets/car.glb', function (gltf) {
+car.load('assets/car.glb', function (gltf) {
 	gltf.scene.position.y=-1; //object position change
 	scene.add(gltf.scene);
 }, undefined, function (error) {
 	console.error(error);
 });
 
+const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
+const torus = new THREE.Mesh(geometry, material);
 
 // Load showroom background
-const loader1 = new GLTFLoader();
+const showroom = new GLTFLoader();
+let loadedShowroom = null;
 
-loader1.load('assets/showroom.glb', function (gltf) {
-	gltf.scene.position.y=-1;
+showroom.load('assets/showroom.glb', function (gltf) {
+	gltf.scene.position.y = -1;
 	scene.add(gltf.scene);
+	loadedShowroom = gltf; // Store the loaded object in the constant
 }, undefined, function (error) {
 	console.error(error);
 });
+
+// Later in your code, you can use loadedShowroom
+// Example: console.log(loadedShowroom);
 
 // Animation
 const animation = new THREE.AnimationClip('car_animation', 5, [
 	new THREE.KeyframeTrack('.scale', [0, 1], [1, 2]),
   ]);
   
+ // Scroll Animation
+
+function moveCamera() {
+	const t = document.body.getBoundingClientRect().top;
+	loadedShowroom.rotation.x += 0.05;
+	loadedShowroom.rotation.y += 0.075;
+	loadedShowroom.rotation.z += 0.05;
+  
+  }
+  
+  document.body.onscroll = moveCamera;
+  moveCamera();
 
 // Add lights to the scene
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
