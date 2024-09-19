@@ -64,12 +64,24 @@ const animation = new THREE.AnimationClip('car_animation', 5, [
   new THREE.KeyframeTrack('.scale', [0, 1], [1, 2]),
 ]);
 
+let previousScrollTop = 0; // Variable to store the previous scroll position
+
 // Scroll Animation
 function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
+  const currentScrollTop = document.body.getBoundingClientRect().top;
+  const scrollDirection = currentScrollTop - previousScrollTop;
+
   if (carModel) {
-    carModel.rotation.y += 0.075;
+    if (scrollDirection < 0) {
+      // Scrolling down
+      carModel.rotation.y += 0.075;
+    } else if (scrollDirection > 0) {
+      // Scrolling up
+      carModel.rotation.y -= 0.075;
+    }
   }
+
+  previousScrollTop = currentScrollTop; // Update the previous scroll position
 }
 
 document.body.onscroll = moveCamera;
