@@ -21,13 +21,6 @@ controls.maxPolarAngle = Math.PI / 2;
 controls.minPolarAngle = Math.PI / 2;
 controls.enableZoom=false;
 
-
-//add background image
-// const loader2 = new THREE.TextureLoader();
-// loader2.load('assets/backdrop.jpg	', function (texture) {
-// 	scene.background = texture;
-// });
-
 // Load 3D car model
 const loader = new GLTFLoader();
 
@@ -39,7 +32,7 @@ loader.load('assets/car.glb', function (gltf) {
 });
 
 
-// Load HDRi background
+// Load showroom background
 const loader1 = new GLTFLoader();
 
 loader1.load('assets/showroom.glb', function (gltf) {
