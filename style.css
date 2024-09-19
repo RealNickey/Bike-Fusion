@@ -1,10 +1,58 @@
 body { margin: 0; }
 
-#meteor{
-    background: #000 url(assets/anim.gif) no-repeat center center;
-    background-size: 1500px; /* Adjust the size as needed */
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    z-index: 100;
+/* From Uiverse.io by Z4drus */ 
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg) translateZ(0);
+  }
+  100% {
+    transform: rotateY(360deg) translateZ(0);
+  }
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.meteor {
+  width: 600px; /* Set the desired width */
+  height: 600px; /* Set the desired height */
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+  border-radius: 50%;
+  position: fixed; /* Fixed position to cover the entire viewport */
+  top: 40%;
+  left: 49;
+  transform: translate(-50%, -50%); /* Center the loader */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 3s linear infinite;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  transform-style: preserve-3d;
+  z-index: 1000; /* Ensure it is on top */
+}
+
+.meteor::before,
+.meteor::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.meteor::before {
+  transform: translateZ(-15px);
+}
+
+.meteor::after {
+  transform: translateZ(15px);
 }
