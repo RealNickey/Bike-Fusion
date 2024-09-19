@@ -1,6 +1,7 @@
 body { margin: 0; }
 
-/* From Uiverse.io by Z4drus */ 
+/* animation css for loader*/
+/* #region */
 @keyframes spin {
   0% {
     transform: rotateY(0deg) translateZ(0);
@@ -56,3 +57,14 @@ html {
 .meteor::after {
   transform: translateZ(15px);
 }
+/* #endregion */
+
+
+/* canvas with  the 3.js content*/
+/* #region */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  /* #endregion */
