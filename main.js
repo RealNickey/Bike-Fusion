@@ -3,6 +3,8 @@ import './style.css';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
+let mixer;
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -40,7 +42,13 @@ loader.load(
   function (gltf) {
     carModel = gltf.scene;
     carModel.position.y = -1; //object position change
+    carModel.rotation.y = Math.PI / 4; // Set initial rotation (45 degrees)
     scene.add(carModel);
+    mixer = new THREE.AnimationMixer(carModel);
+    const clips = gltf.animations;
+    const clip = THREE.AnimationClip.findByName(clips, 'AllActions');
+    const action = mixer.clipAction(clip);
+    action.play();
     if (loadedShowroom) hideLoader(); // Hide loader if showroom is already loaded
   },
   undefined,
@@ -48,6 +56,7 @@ loader.load(
     console.error(error);
   }
 );
+
 
 // Load showroom background
 showroom.load('assets/showroom.glb', function (gltf) {
@@ -124,11 +133,16 @@ audioLoader.load( 'src/sound.mp3', function( buffer ) {
     }, 4000);
 });
 
+const clock = new THREE.Clock();
 function animate() {
-	requestAnimationFrame(animate);
-	controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
-	renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+  if (mixer) {
+      mixer.update(clock.getDelta()); // Update the animation mixer if it is defined
+  }
+  controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
+  renderer.render(scene, camera);
 }
+
 
 animate();
 
