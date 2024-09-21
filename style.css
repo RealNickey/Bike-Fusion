@@ -1,3 +1,5 @@
+@import url("https://use.typekit.net/jmk3xov.css");
+
 body { margin: 0; }
 
 /* animation css for loader*/
@@ -66,5 +68,176 @@ canvas {
     position: fixed;
     top: 0;
     left: 0;
+  }
+  /* #endregion */
+
+  /* #region */
+
+
+:root {
+  --dark-bg: rgba(15, 15, 15, 0.95);
+  --spacing: 350px;
+
+  font-family: brandon-grotesque, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+
+main {
+  width: 100vw;
+  color: white;
+  z-index: 99;
+  position: absolute;
+  width: 100%;
+  margin: 0px auto;
+  padding: 120px 0px;
+  
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+h1, h2, h3, blockquote {
+  font-family: elevon, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  visibility: hidden;
+
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+
+  header {
+    background: var(--dark-bg);
+    grid-column: 2 / span 5;
+    font-size: 2.5rem;
+    padding: 2rem;
+    margin-bottom: var(--spacing);
+    visibility: hidden;
+
+  }
+
+  section {
+    grid-column: 2 / 8;
+    padding: 1rem;
+    background: var(--dark-bg);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing);
+    visibility: hidden;
+
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 0;
+    grid-column: 2 / span 9;
+    margin-bottom: var(--spacing);
+    visibility: hidden;
+
+  }
+
+  blockquote p {
+    color: black;
+    background-color: white;
+    font-size: 4rem;
+    display: inline;
+    line-height: 1;
+    visibility: hidden;
+
+  }
+
+  .left {
+    grid-column: 6 / 12;
+  }
+
+  /* #endregion */
+
+
+  /* #region */
+    :root {
+    --glow-rgb: 248, 237, 237;
+    
+  }
+   
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .glow-point {
+    position: absolute;
+    box-shadow: 0rem 0rem 1.2rem 0.6rem rgb(var(--glow-rgb));
+    pointer-events: none;
+    z-index: 1500;
+  }
+  
+  .star {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 1rem;
+    animation-duration: 1500ms;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+  }
+  
+  @keyframes fall-1 {
+    0% {
+      transform: translate(0px, 0px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(0.25);
+      opacity: 0;
+    }
+    
+    5% {
+      transform: translate(10px, -10px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(1);
+      opacity: 1;
+    }
+    
+    100% {
+      transform: translate(25px, 200px) rotateX(180deg) rotateY(270deg) rotateZ(90deg) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fall-2 {
+    0% {
+      transform: translate(0px, 0px) rotateX(-20deg) rotateY(10deg) scale(0.25);
+      opacity: 0;
+    }
+    
+    10% {
+      transform: translate(-10px, -5px) rotateX(-20deg) rotateY(10deg) scale(1);
+      opacity: 1;
+    }
+    
+    100% {
+      transform: translate(-10px, 160px) rotateX(-90deg) rotateY(45deg) scale(0.25);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fall-3 {
+    0% {
+      transform: translate(0px, 0px) rotateX(0deg) rotateY(45deg) scale(0.5);
+      opacity: 0;
+    }
+    
+    15% {
+      transform: translate(7px, 5px) rotateX(0deg) rotateY(45deg) scale(1);
+      opacity: 1;
+    }
+    
+    100% {
+      transform: translate(20px, 120px) rotateX(-180deg) rotateY(-90deg) scale(0.5);
+      opacity: 0;
+    }
   }
   /* #endregion */

@@ -1,32 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>My first three.js app</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-  <div id="meteor" class="meteor"></div>
-  <canvas id="bg"></canvas>   
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <script type="module" src="/main.js"></script>
-  <script>
-    var loader = document.getElementById("meteor");
-    var minDuration = 1000; // Minimum duration in milliseconds (e.g., 3000ms = 3 seconds)
-    var startTime = Date.now();
+  </head>
+  <body>
+    <i class="fa-solid fa-star"></i>
+    <div id="meteor" class="meteor"></div>
+    <canvas id="bg"></canvas>
 
-    window.addEventListener("load", function() {
-      var elapsedTime = Date.now() - startTime;
-      var remainingTime = minDuration - elapsedTime;
+    <script type="module" src="/main.js"></script>
+    <script>
+      var loader = document.getElementById("meteor");
+      var minDuration = 1000; // Minimum duration in milliseconds (e.g., 3000ms = 3 seconds)
+      var startTime = Date.now();
 
-      if (remainingTime > 0) {
-        setTimeout(function() {
+      window.addEventListener("load", function () {
+        var elapsedTime = Date.now() - startTime;
+        var remainingTime = minDuration - elapsedTime;
+
+        if (remainingTime > 0) {
+          setTimeout(function () {
+            loader.style.display = "none";
+          }, remainingTime);
+        } else {
           loader.style.display = "none";
-        }, remainingTime);
-      } else {
-        loader.style.display = "none";
-      }
-    });
-  </script>
-</body>
+        }
+      });
+    </script>
+  </body>
+</html>
+
+        <main>
+      <header>
+        <h1></h1>
+        <p></p>
+      </header>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section>
+        <h2></h2>
+        <p></p>
+        <p></p>
+        <p></p>
+      </section>
+    
+      <section class="light">
+        <h2></h2>
+        <p></p>
+        <h2></h2>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section class="left">
+        <h2></h2>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <header>
+        <h1></h1>
+        <p></p>
+      </header>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section>
+        <h2></h2>
+        <p></p>
+        <p></p>
+        <p></p>
+      </section>
+    
+      <section class="light">
+        <h2></h2>
+        <p></p>
+        <h2></h2>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section class="left">
+        <h2></h2>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+      <header>
+        <h1></h1>
+        <p></p>
+      </header>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section>
+        <h2></h2>
+        <p></p>
+        <p></p>
+        <p></p>
+      </section>
+    
+      <section class="light">
+        <h2></h2>
+        <p></p>
+        <h2></h2>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section class="left">
+        <h2></h2>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <header>
+        <h1></h1>
+        <p></p>
+      </header>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section>
+        <h2></h2>
+        <p></p>
+        <p></p>
+        <p></p>
+      </section>
+    
+      <section class="light">
+        <h2></h2>
+        <p></p>
+        <h2></h2>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section class="left">
+        <h2></h2>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote><header>
+        <h1></h1>
+        <p></p>
+      </header>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section>
+        <h2></h2>
+        <p></p>
+        <p></p>
+        <p></p>
+      </section>
+    
+      <section class="light">
+        <h2></h2>
+        <p></p>
+        <h2></h2>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section class="left">
+        <h2></h2>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <header>
+        <h1></h1>
+        <p></p>
+      </header>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section>
+        <h2></h2>
+        <p></p>
+        <p></p>
+        <p></p>
+      </section>
+    
+      <section class="light">
+        <h2></h2>
+        <p></p>
+        <h2></h2>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    
+      <section class="left">
+        <h2></h2>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+        <h3></h3>
+        <p></p>
+      </section>
+    
+      <blockquote>
+        <p></p>
+      </blockquote>
+    </main>
+  </body>
 </html>
