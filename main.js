@@ -75,9 +75,11 @@ function moveCamera() {
     if (scrollDirection < 0) {
       // Scrolling down
       carModel.rotation.y += 0.075;
+      carModel.position.z += 0.2;
     } else if (scrollDirection > 0) {
       // Scrolling up
       carModel.rotation.y -= 0.075;
+      carModel.position.z -= 0.2;
     }
   }
 
